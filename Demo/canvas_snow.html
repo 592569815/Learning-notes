@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas实现下雪效果</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id='canvas'></canvas>
+  <script>
+    let el = document.querySelector('#canvas')
+    let ctx = el.getContext('2d')
+    const state = {
+      num: 1000,
+      size: [1, 4]
+    }
+    let kaze = 0
+    class Particle {
+      constructor() {
+        let { size } = state
+        let { innerWidth, innerHeight } = window
+        this.ww = innerWidth
+        this.hh = innerHeight
+        this.x = Math.random() * this.ww * 2 - Math.random() * this.ww
+        this.r = Math.random() * (size[1] - size[0]) + size[0]
+        this.y = -this.r
+        this.t = -Math.random() * 8
+        this.color = brgba('#FFFFFF', this.r / size[1])
+        this.vRatio = this.r / size[1]
+        this.xvBase = 0.5
+        this.yvBase = 0.6
+      }
+      render() {
+        let { x, y, r , vRatio, hh, ww, t, color, xvBase, yvBase} = this
+        this.t += 1 / 60
+        this.y += t * yvBase * vRatio
+        this.x += t * kaze * vRatio * xvBase
+        if (y > hh + r) {
+          this.y = -r
+          this.x = Math.random() * this.ww - Math.random() * this.ww
+          this.t = -Math.random() * 8
+        }
+        ctx.beginPath()
+        ctx.arc(x, y, r, 0, Math.PI * 2)
+        ctx.fillStyle = color
+        ctx.fill()
+        ctx.closePath()
+      }
+    }
+    function brgba(hex, opacity) {
+      let h = hex.charAt(0) == "#" ? hex.substring(1) : hex
+      let r = parseInt(h.substring(0, 2), 16)
+      let g = parseInt(h.substring(2, 4), 16)
+      let b = parseInt(h.substring(4, 6), 16)
+      let a = opacity;
+      return `rgba(${r},${g},${b},${a})`
+    }
+    let arr = []
+    let back = document.createElement('img')
+    back.setAttribute('src', 'https://github.com/CoyleCyq/img/blob/master/myWeb/snow_back.jpg?raw=true')
+    let anim
+    function render() {
+      let { innerWidth, innerHeight } = window
+      ctx.clearRect(0, 0, innerWidth, innerHeight)
+      ctx.drawImage(back, 0, 0, innerWidth, innerHeight)
+      arr.forEach(v => {
+        v.render()
+      })
+      anim = requestAnimationFrame(render)
+    }
+    function resize() {
+      let { innerWidth, innerHeight } = window
+      el.width = innerWidth
+      el.height = innerHeight
+      arr = []
+      for (let i = 0; i < state.num; i++) {
+          arr.push(new Particle())
+      }
+      cancelAnimationFrame(anim)
+      anim = requestAnimationFrame(render)
+    }
+    resize()
+    window.addEventListener('resize', resize)
+    function adpatKaze(e) {
+      let { innerWidth, innerHeight } = window
+      let { clientX } = e
+      let center = innerWidth / 2
+      kaze = - (clientX - center) / center
+    }
+    el.addEventListener('mousemove', adpatKaze)
+  </script>
+</body>
+
+</html>
