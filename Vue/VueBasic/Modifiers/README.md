@@ -16,7 +16,7 @@
     <!--修饰符可以串联.click.prevent.once-->
     <a href="https://github.com/dk-lan" target="_blank" @click.prevent.once="prevent">dk's github</a>
 ```
-[事件修饰符效果预览](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Modifiers/eventModifiers.html)
+[事件修饰符效果预览](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Modifiers/eventModifiers.html)
 
 #按键修饰符
 ```html
@@ -37,7 +37,7 @@
     </fieldset> 
 </div>
 ```
-[按键修饰符效果预览](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Modifiers/keypress.html)
+[按键修饰符效果预览](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Modifiers/keypress.html)
 
 # 表单修饰符
 ```html
@@ -48,4 +48,4 @@
         <!-- 自动过滤用户输入的首尾空格 -->
         <input v-model.trim="counter">  
 ```
-[表单修饰符效果预览](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Modifiers/form.html)
+[表单修饰符效果预览](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Modifiers/form.html)

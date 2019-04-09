@@ -24,7 +24,7 @@
             * 事件：Event2
             * 事件：Event3
             
-现在的问题要解决是组件C1或者C2要和组件B1或B2通信，前面有详细讲过 Vue 本身组件之间通信的方法，最简单的就是 `$parent` 和 `$children`，如果不知道如何使用的请回到上面看 [组件通信](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Communication)
+现在的问题要解决是组件C1或者C2要和组件B1或B2通信，前面有详细讲过 Vue 本身组件之间通信的方法，最简单的就是 `$parent` 和 `$children`，如果不知道如何使用的请回到上面看 [组件通信](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Communication)
 
 现在用 `$parent` 和 `$children` 来上面的问题：组件C1调用组件B2的方法
 ```javascript

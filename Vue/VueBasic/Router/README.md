@@ -42,7 +42,7 @@
         router
     }).$mount('#app')
 ```
-[效果预览](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Router/router.html)
+[效果预览](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Router/router.html)
 
 ## 路由参数
 ```html
@@ -71,7 +71,7 @@
         router
     }).$mount('#app')
 ```
-[效果预览](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Router/params.html)
+[效果预览](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Router/params.html)
 
 ## 嵌套路由
 ```html
@@ -114,7 +114,7 @@
         router
     }).$mount('#app')
 ```
-[效果预览](https://github.com/CoyleCyq/coylecyq.github.io/tree/master/Vue/VueBasic/Router/routerChildren.html)
+[效果预览](https://github.com/CoyleCyq/Learning-notes/tree/master/Vue/VueBasic/Router/routerChildren.html)
 
 ## 编程式导航
 用 javascript 跳转路由
